@@ -1,0 +1,18 @@
+# This query counts the massive datasets and the number of samples in enpkg + the ones linked to jlw with owl:sameAs
+PREFIX jlw: <https://www.sinergiawolfender.org/jlw/>
+PREFIX enpkg: <https://enpkg.commons-lab.org/kg/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?doi
+( COUNT( DISTINCT( ?sample_jlw )) AS ?count_sample_jlw ) 
+( COUNT( DISTINCT( ?sample_enpkg )) AS ?count_sample_enpkg ) 
+( COUNT( DISTINCT( ?xml_file )) AS ?count_xml_file ) 
+WHERE {
+	?xml_file enpkg:has_massive_doi ?doi .
+	?sample_enpkg enpkg:has_LCMS ?xml_file .
+    OPTIONAL { 
+        ?sample_jlw a jlw:LabExtract .
+    	?sample_enpkg owl:sameAs ?sample_jlw .
+    }
+}
+GROUP BY ?doi
