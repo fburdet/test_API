@@ -1,5 +1,5 @@
 # This query counts the massive datasets and the number of samples in enpkg + the ones linked to jlw with owl:sameAs
-#+ endpoint: https://www.sinergiawolfender.org/graphdb
+#+ endpoint: https://enpkg.commons-lab.org/graphdb
 PREFIX jlw: <https://www.sinergiawolfender.org/jlw/>
 PREFIX enpkg: <https://enpkg.commons-lab.org/kg/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
